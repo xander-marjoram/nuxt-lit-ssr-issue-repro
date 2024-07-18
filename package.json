@@ -1,0 +1,24 @@
+{
+  "name": "nuxt-lit-ssr-issue",
+  "version": "1.0.0",
+  "description": "Minimal repro for SSR issue",
+  "main": "index.js",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "author": "xander.marjoram@justeattakeaway.com",
+  "license": "ISC",
+  "volta": {
+    "node": "20.15.1",
+    "yarn": "3.8.3"
+  },
+  "dependencies": {
+    "nuxt": "^3.12.3",
+    "vue": "latest"
+  }
+}
