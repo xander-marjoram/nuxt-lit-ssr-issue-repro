@@ -1,6 +1,5 @@
 <template>
   <pie-modal
-    heading="Heading"
     :isOpen="true"
     :leadingAction="{ text: 'Button text' }">
     Modal content
@@ -9,4 +8,6 @@
 
 <script setup lang="ts">
 import './dist/index.js';
+
+// Remove leadingAction prop to see the modal render without an SSR error
 </script>
