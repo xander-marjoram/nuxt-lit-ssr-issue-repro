@@ -15,15 +15,7 @@ import {
     ON_MODAL_OPEN_EVENT,
 } from './defs';
 
-const componentSelector = 'pie-modal';
-
-/**
- * @tagname pie-modal
- * @event {CustomEvent} pie-modal-open - when the modal is opened.
- */
 export class PieModal extends LitElement implements ModalProps {
-    @property({ type: Boolean })
-    public isFooterPinned = true;
 
     @property({ type: Boolean })
     public isOpen = false;
@@ -93,8 +85,7 @@ export class PieModal extends LitElement implements ModalProps {
         return html`
             <pie-button
                 variant="${variant}"
-                type="submit"
-                data-test-id="modal-leading-action">
+                type="submit">
                 ${text}
             </pie-button>
         `;
@@ -104,49 +95,29 @@ export class PieModal extends LitElement implements ModalProps {
         const hasFooterLeadingAction = this.leadingAction?.text;
 
         return html`
-            <article class="c-modal-scrollContainer c-modal-content c-modal-content--scrollable ${hasFooterLeadingAction ? 'c-modal-hasFooterActions' : ''}">
-                <div class="c-modal-contentInner"
-                     data-test-id="modal-content-inner">
+            <article>
+                <div>
                     <slot></slot>
                 </div>
             </article>
             ${hasFooterLeadingAction ? html`
-                <footer class="c-modal-footer"
-                        data-test-id="pie-modal-footer">
+                <footer>
                     ${this.renderLeadingAction()}
                 </footer>` : nothing}`;
     }
 
     public override render () {
-        const {
-            isFooterPinned,
-            leadingAction,
-        } = this;
-
         return html`
-        <dialog
-            id="dialog"
-            class="c-modal"
-            ?hasActions=${leadingAction}
-            data-test-id="pie-modal">
-            ${
-            // We need to wrap the remaining content in a shared scrollable container if the footer is not pinned
-            isFooterPinned
-                ? this.renderModalContentAndFooter()
-                : html`
-                        <div class="c-modal-scrollContainer">
-                            ${this.renderModalContentAndFooter()}
-                        </div>
-                        `
-            }
+        <dialog id="dialog">
+            ${this.renderModalContentAndFooter()}
         </dialog>`;
     }
 }
 
-defineCustomElement(componentSelector, PieModal);
+defineCustomElement('pie-modal', PieModal);
 
 declare global {
     interface HTMLElementTagNameMap {
-        [componentSelector]: PieModal;
+        'pie-modal': PieModal;
     }
 }

@@ -7,7 +7,6 @@ type ActionProps = {
 
 export type ModalProps = {
     isOpen?: boolean;
-    isFooterPinned?: boolean;
     leadingAction?: ActionProps;
 };
 
