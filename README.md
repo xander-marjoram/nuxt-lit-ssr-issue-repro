@@ -11,9 +11,15 @@ Make sure to install the dependencies:
 yarn install
 ```
 
+## Building locally
+
+You may need to run `npx nuxt build` to generate the `.nuxt` directory. This will then fail with a rollup error but after that you can run `yarn build` which runs rollup.
+
 ## Development Server
 
-Start the development server on `http://localhost:3000`:
+Start the development server on `http://localhost:3002`:
+
+There will likely be some errors but the site still runs well enough to reproduce the issue.
 
 ```bash
 # yarn

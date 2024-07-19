@@ -7,29 +7,16 @@ import { property, query } from 'lit/decorators.js';
 import '@justeattakeaway/pie-button';
 import {
     requiredProperty,
-    validPropertyValues,
     defineCustomElement,
     dispatchCustomEvent,
 } from '@justeattakeaway/pie-webc-core';
 
 import {
     type ModalProps,
-    type ModalActionType,
-    positions,
-    sizes,
-    defaultProps,
     ON_MODAL_OPEN_EVENT,
-    ON_MODAL_LEADING_ACTION_CLICK,
 } from './defs';
 
-// Valid values available to consumers
-export * from './defs';
-
 const componentSelector = 'pie-modal';
-
-export interface ModalEventDetail {
-    targetModal: PieModal;
-}
 
 /**
  * @tagname pie-modal
@@ -44,26 +31,24 @@ export class PieModal extends LitElement implements ModalProps {
     public heading!: string;
 
     @property({ type: Boolean })
-    public isFooterPinned = defaultProps.isFooterPinned;
+    public isFooterPinned = true;
 
     @property({ type: Boolean })
-    public isOpen = defaultProps.isOpen;
+    public isOpen = false;
 
     @property({ type: Object })
     public leadingAction: ModalProps['leadingAction'];
 
     @property()
-    @validPropertyValues(componentSelector, positions, defaultProps.position)
-    public position: ModalProps['position'] = defaultProps.position;
+    public position: ModalProps['position'] = 'center';
 
     @property()
-    @validPropertyValues(componentSelector, sizes, defaultProps.size)
-    public size: ModalProps['size'] = defaultProps.size;
+    public size: ModalProps['size'] = 'medium';
+
+    private _backButtonClicked = false;
 
     @query('dialog')
     private _dialog?: HTMLDialogElement;
-
-    private _backButtonClicked = false;
 
     constructor () {
         super();
@@ -79,8 +64,8 @@ export class PieModal extends LitElement implements ModalProps {
     }
 
     override disconnectedCallback () : void {
-        document.removeEventListener(ON_MODAL_OPEN_EVENT, (event) => this._handleModalOpened(<CustomEvent>event));
         super.disconnectedCallback();
+        document.removeEventListener(ON_MODAL_OPEN_EVENT, (event) => this._handleModalOpened(<CustomEvent>event));
     }
 
     override async firstUpdated (changedProperties: PropertyValues<this>) : Promise<void> {
@@ -90,12 +75,6 @@ export class PieModal extends LitElement implements ModalProps {
         console.log('size in firstUpdated', this.size);
         super.firstUpdated(changedProperties);
 
-        if (this._dialog) {
-            this._dialog.addEventListener('close', () => {
-                this.isOpen = false;
-            });
-        }
-
         this._handleModalOpenStateOnFirstRender(changedProperties);
     }
 
@@ -104,9 +83,16 @@ export class PieModal extends LitElement implements ModalProps {
         this._handleModalOpenStateChanged(changedProperties);
     }
 
-    /**
-     * Opens the dialog element and disables page scrolling
-     */
+    // Handles the value of the isOpen property on first render of the component
+    private _handleModalOpenStateOnFirstRender (changedProperties: PropertyValues<this>) : void {
+        // This ensures if the modal is open on first render, the scroll lock and backdrop are applied
+        const previousValue = changedProperties.get('isOpen');
+
+        if (previousValue === undefined && this.isOpen) {
+            dispatchCustomEvent(this, ON_MODAL_OPEN_EVENT, { targetModal: this });
+        }
+    }
+
     private _handleModalOpened (event: CustomEvent): void {
         const { targetModal } = event.detail;
 
@@ -117,16 +103,6 @@ export class PieModal extends LitElement implements ModalProps {
 
             // The ::backdrop pseudoelement is only shown if the modal is opened via JS
             this._dialog?.showModal();
-        }
-    }
-
-    // Handles the value of the isOpen property on first render of the component
-    private _handleModalOpenStateOnFirstRender (changedProperties: PropertyValues<this>) : void {
-        // This ensures if the modal is open on first render, the scroll lock and backdrop are applied
-        const previousValue = changedProperties.get('isOpen');
-
-        if (previousValue === undefined && this.isOpen) {
-            dispatchCustomEvent(this, ON_MODAL_OPEN_EVENT, { targetModal: this });
         }
     }
 
@@ -143,13 +119,6 @@ export class PieModal extends LitElement implements ModalProps {
             } else {
                 dispatchCustomEvent(this, ON_MODAL_OPEN_EVENT, { targetModal: this });
             }
-        }
-    }
-
-    private _handleActionClick (actionType: ModalActionType) : void {
-        if (actionType === 'leading') {
-            this._dialog?.close('leading');
-            dispatchCustomEvent(this, ON_MODAL_LEADING_ACTION_CLICK, { targetModal: this });
         }
     }
 
@@ -177,7 +146,6 @@ export class PieModal extends LitElement implements ModalProps {
             <pie-button
                 variant="${variant}"
                 type="submit"
-                @click="${() => this._handleActionClick('leading')}"
                 data-test-id="modal-leading-action">
                 ${text}
             </pie-button>
@@ -210,16 +178,16 @@ export class PieModal extends LitElement implements ModalProps {
             heading,
             isFooterPinned,
             leadingAction,
-            position,
-            size,
+            position = 'center',
+            size = 'medium',
         } = this;
 
         return html`
         <dialog
             id="dialog"
             class="c-modal"
-            size="${size || defaultProps.size}"
-            position="${position || defaultProps.position}"
+            size="${size}"
+            position="${position}"
             ?hasActions=${leadingAction}
             data-test-id="pie-modal">
             <header class="c-modal-header"

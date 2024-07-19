@@ -1,5 +1,3 @@
-import { type ComponentDefaultProps } from '@justeattakeaway/pie-webc-core';
-
 import { type Variant } from '@justeattakeaway/pie-button/src/defs';
 
 export const sizes = ['small', 'medium', 'large'] as const;
@@ -35,11 +33,6 @@ export type ModalProps = {
     isFooterPinned?: boolean;
 
     /**
-     * When true, displays a loading spinner in the modal.
-     */
-    isLoading?: boolean;
-
-    /**
      * The leading action configuration for the modal.
      */
     leadingAction?: ActionProps;
@@ -68,15 +61,3 @@ export const ON_MODAL_OPEN_EVENT = 'pie-modal-open';
  * @constant
  */
 export const ON_MODAL_LEADING_ACTION_CLICK = 'pie-modal-leading-action-click';
-
-export type ModalActionType = 'leading';
-
-export type DefaultProps = ComponentDefaultProps<ModalProps, keyof Omit<ModalProps, 'heading' | 'leadingAction'>>;
-
-export const defaultProps: DefaultProps = {
-    isOpen: false,
-    isFooterPinned: true,
-    isLoading: false,
-    position: 'center',
-    size: 'medium',
-};

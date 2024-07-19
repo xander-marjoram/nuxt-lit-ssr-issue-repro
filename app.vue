@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <h1>Title</h1>
-    <p>Paragraph</p>
-    <pie-modal :isOpen="true" :leadingAction="{ text: 'Button text' }">
-      Modal content
-    </pie-modal>
-  </div>
+  <pie-modal
+    heading="Heading"
+    :isOpen="true"
+    :leadingAction="{ text: 'Button text' }">
+    Modal content
+  </pie-modal>
 </template>
 
 <script setup lang="ts">
