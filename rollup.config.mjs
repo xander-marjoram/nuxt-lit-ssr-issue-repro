@@ -8,10 +8,12 @@ export default {
         format: 'es',
     },
     external: (id) => {
-        if (/^lit/.test(id)) {
-            console.log('Externalising', id);
+        if (id.startsWith('@justeattakeaway/pie-') || /^lit/.test(id)) {
+            console.log(`Excluding ${id} from the bundle`);
             return true;
         }
+
+        return false;
     },
     plugins: [
         typescript(),

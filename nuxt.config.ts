@@ -4,7 +4,9 @@ import { defineNuxtConfig } from 'nuxt/config';
 export default defineNuxtConfig({
   ssr: true,
 
-  modules: [['nuxt-ssr-lit', { litElementPrefix: ['test-'] }]],
+  modules: [['nuxt-ssr-lit', { litElementPrefix: ['pie-'] }]],
+
+  css: ['@justeattakeaway/pie-css'],
 
   devServer: {
       port: 3002,

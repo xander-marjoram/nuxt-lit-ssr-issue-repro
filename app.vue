@@ -2,9 +2,9 @@
   <div>
     <h1>Title</h1>
     <p>Paragraph</p>
-    <test-component :testBoolean="true">
-      <p>Slotted content</p>
-    </test-component>
+    <pie-modal :isOpen="true" :leadingAction="{ text: 'Button text' }">
+      Modal content
+    </pie-modal>
   </div>
 </template>
 
