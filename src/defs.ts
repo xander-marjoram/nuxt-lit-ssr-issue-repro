@@ -6,12 +6,6 @@ export const headingLevels = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export const sizes = ['small', 'medium', 'large'] as const;
 export const positions = ['top', 'center'] as const;
 
-export type AriaProps = {
-    close?: string;
-    back?: string;
-    loading?: string;
-};
-
 export type ActionProps = {
         /**
          * The text to display inside the button.
@@ -30,11 +24,6 @@ export type ActionProps = {
 };
 
 export type ModalProps = {
-    /**
-     * The ARIA labels used for the modal close and back buttons, as well as loading state.
-     */
-    aria?: AriaProps;
-
     /**
      * When true, the modal will have a back button. This currently behaves the same as the close button.
      */
@@ -92,11 +81,6 @@ export type ModalProps = {
      * The leading action configuration for the modal.
      */
     leadingAction?: ActionProps;
-
-    /**
-     * The supporting action configuration for the modal.
-     */
-    supportingAction?: ActionProps;
 
     /*
      * The position of the modal; this controls where it will appear on the page.

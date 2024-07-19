@@ -1942,13 +1942,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/body-scroll-lock@npm:3.1.2":
-  version: 3.1.2
-  resolution: "@types/body-scroll-lock@npm:3.1.2"
-  checksum: b114b5bd2152ac4414b3e881ed372d53de36342eb8b5365e3b607e6c1d40fb0b554628bd05d9d840d18550541e4b9f6128c86099b4a8f511d48a31a5d7c34f47
-  languageName: node
-  linkType: hard
-
 "@types/compression@npm:1.7.5":
   version: 1.7.5
   resolution: "@types/compression@npm:1.7.5"
@@ -2892,13 +2885,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"body-scroll-lock@npm:3.1.5":
-  version: 3.1.5
-  resolution: "body-scroll-lock@npm:3.1.5"
-  checksum: 52c25b81d6e7a87cfbdd7870363c3e20a439dbc76535b735916e2df907abbce95c0da0d2c7a2cfe88f49775d53bbc4bd09445ffda2d61b999efa3f0b1dedfc5e
-  languageName: node
-  linkType: hard
-
 "boolbase@npm:^1.0.0":
   version: 1.0.0
   resolution: "boolbase@npm:1.0.0"
@@ -3693,13 +3679,6 @@ __metadata:
   version: 5.0.0
   resolution: "devalue@npm:5.0.0"
   checksum: 63723e194f3f17567e3436e63acf41ea286c87f1dc8c51b2e0cd39ee895d84ea10a1c593c862596ae22af732e2ca76f5401ec66de2547e5dd0dbd889fad38c30
-  languageName: node
-  linkType: hard
-
-"dialog-polyfill@npm:0.5.6":
-  version: 0.5.6
-  resolution: "dialog-polyfill@npm:0.5.6"
-  checksum: dde8d4b6a62b63b710e0d0d70b615d92ff08f3cb2b521e1f99b17e8220d9d55d0fdf9fc17fbe77b0ff1be817094e14b60c4c4bacd5456fba427ede48d2d90230
   languageName: node
   linkType: hard
 
@@ -6004,9 +5983,6 @@ __metadata:
     "@justeattakeaway/pie-webc-core": 0.24.0
     "@nuxt/types": ^2.18.1
     "@rollup/plugin-node-resolve": 15.2.3
-    "@types/body-scroll-lock": 3.1.2
-    body-scroll-lock: 3.1.5
-    dialog-polyfill: 0.5.6
     lit: 3.1.4
     nuxt: ^3.12.3
     nuxt-ssr-lit: 1.6.22
