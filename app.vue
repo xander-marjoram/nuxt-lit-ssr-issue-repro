@@ -2,7 +2,9 @@
   <div>
     <h1>Title</h1>
     <p>Paragraph</p>
-    <test-component></test-component>
+    <test-component :testBoolean="true">
+      <p>Slotted content</p>
+    </test-component>
   </div>
 </template>
 

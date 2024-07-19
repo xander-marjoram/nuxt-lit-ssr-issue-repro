@@ -6,8 +6,6 @@ export default defineNuxtConfig({
 
   modules: [['nuxt-ssr-lit', { litElementPrefix: ['test-'] }]],
 
-  devtools: { enabled: true },
-
   devServer: {
       port: 3002,
   },
