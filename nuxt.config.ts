@@ -6,8 +6,6 @@ export default defineNuxtConfig({
 
   modules: [['nuxt-ssr-lit', { litElementPrefix: ['pie-'] }]],
 
-  css: ['@justeattakeaway/pie-css'],
-
   devServer: {
       port: 3002,
   },

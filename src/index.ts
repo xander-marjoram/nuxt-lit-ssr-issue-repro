@@ -1,27 +1,20 @@
 import {
     LitElement, nothing, type TemplateResult, type PropertyValues,
 } from 'lit';
-import { html, unsafeStatic } from 'lit/static-html.js';
+import { html } from 'lit/static-html.js';
 import { property, query } from 'lit/decorators.js';
 
 import '@justeattakeaway/pie-button';
-import '@justeattakeaway/pie-icon-button';
 import {
     requiredProperty,
-    RtlMixin,
     validPropertyValues,
     defineCustomElement,
     dispatchCustomEvent,
 } from '@justeattakeaway/pie-webc-core';
-import '@justeattakeaway/pie-icons-webc/dist/IconClose.js';
-import '@justeattakeaway/pie-icons-webc/dist/IconChevronLeft.js';
-import '@justeattakeaway/pie-icons-webc/dist/IconChevronRight.js';
-import '@justeattakeaway/pie-spinner';
 
 import {
     type ModalProps,
     type ModalActionType,
-    headingLevels,
     positions,
     sizes,
     defaultProps,
@@ -45,20 +38,13 @@ export interface ModalEventDetail {
  * @event {CustomEvent} pie-modal-back - when the modal back button is clicked.
  * @event {CustomEvent} pie-modal-leading-action-click - when the modal leading action is clicked.
  */
-export class PieModal extends RtlMixin(LitElement) implements ModalProps {
+export class PieModal extends LitElement implements ModalProps {
     @property({ type: String })
     @requiredProperty(componentSelector)
     public heading!: string;
 
-    @property()
-    @validPropertyValues(componentSelector, headingLevels, defaultProps.headingLevel)
-    public headingLevel: ModalProps['headingLevel'] = defaultProps.headingLevel;
-
     @property({ type: Boolean })
     public isFooterPinned = defaultProps.isFooterPinned;
-
-    @property({ type: Boolean, reflect: true })
-    public isLoading = defaultProps.isLoading;
 
     @property({ type: Boolean })
     public isOpen = defaultProps.isOpen;
@@ -181,7 +167,7 @@ export class PieModal extends RtlMixin(LitElement) implements ModalProps {
             return nothing;
         }
 
-        const { text, variant = 'primary', ariaLabel } = this.leadingAction;
+        const { text, variant = 'primary' } = this.leadingAction;
 
         if (!text) {
             return nothing;
@@ -211,7 +197,6 @@ export class PieModal extends RtlMixin(LitElement) implements ModalProps {
                      data-test-id="modal-content-inner">
                     <slot></slot>
                 </div>
-                ${this.isLoading ? html`<pie-spinner size="xlarge" variant="secondary"></pie-spinner>` : nothing}
             </article>
             ${hasFooterLeadingAction ? html`
                 <footer class="c-modal-footer"
@@ -223,14 +208,11 @@ export class PieModal extends RtlMixin(LitElement) implements ModalProps {
     public override render () {
         const {
             heading,
-            headingLevel = 'h2',
             isFooterPinned,
             leadingAction,
             position,
             size,
         } = this;
-
-        const headingTag = unsafeStatic(headingLevel);
 
         return html`
         <dialog
@@ -242,9 +224,9 @@ export class PieModal extends RtlMixin(LitElement) implements ModalProps {
             data-test-id="pie-modal">
             <header class="c-modal-header"
             data-test-id="modal-header">
-                <${headingTag} class="c-modal-heading">
+                <h2 class="c-modal-heading">
                     ${heading}
-                </${headingTag}>
+                </h2>
             </header>
             ${
             // We need to wrap the remaining content in a shared scrollable container if the footer is not pinned
