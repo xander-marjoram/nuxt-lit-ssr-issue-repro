@@ -8,7 +8,7 @@ export default {
         format: 'es',
     },
     external: (id) => {
-        if (id.startsWith('@justeattakeaway/pie-') || /^lit/.test(id)) {
+        if (/^lit/.test(id)) {
             console.log(`Excluding ${id} from the bundle`);
             return true;
         }
