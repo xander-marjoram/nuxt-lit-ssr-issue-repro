@@ -1,6 +1,6 @@
 <template>
   <test-component
-    :propObject="{}">
+    :propObject="{ type: 'button' }">
   </test-component>
 </template>
 
