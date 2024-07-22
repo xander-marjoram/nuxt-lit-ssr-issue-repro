@@ -1005,35 +1005,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@justeattakeaway/pie-button@npm:0.47.8":
-  version: 0.47.8
-  resolution: "@justeattakeaway/pie-button@npm:0.47.8"
-  dependencies:
-    "@justeattakeaway/pie-spinner": 0.6.6
-    "@justeattakeaway/pie-webc-core": 0.24.0
-    element-internals-polyfill: 1.3.11
-  checksum: cb648cb3a967c60792ce69968982c19055c201175717f4dec0bd0fa93f7354ba7a30a186b034588cb7f9fc20f693d319a1e34645c46a44c1aaa07c01acce7653
-  languageName: node
-  linkType: hard
-
-"@justeattakeaway/pie-spinner@npm:0.6.6":
-  version: 0.6.6
-  resolution: "@justeattakeaway/pie-spinner@npm:0.6.6"
-  dependencies:
-    "@justeattakeaway/pie-webc-core": 0.24.0
-  checksum: 0a046cbd4136c0508045b75156138409e245051a86ea422cf3f631d60338364bfc1dc7a1f2cf42658deff9ab78b3c212921b243e66849e3236d382260e677bbd
-  languageName: node
-  linkType: hard
-
-"@justeattakeaway/pie-webc-core@npm:0.24.0":
-  version: 0.24.0
-  resolution: "@justeattakeaway/pie-webc-core@npm:0.24.0"
-  dependencies:
-    lit: 3.1.3
-  checksum: 81007d8b3b7bb49c83693b28285e2be41dce7285774eed42fd6d66fda92dc0b8c4a00cc1cf9870234be5c689969833ab4d9c842405eb481ec499aeb057bce8cd
-  languageName: node
-  linkType: hard
-
 "@kwsites/file-exists@npm:^1.1.1":
   version: 1.1.1
   resolution: "@kwsites/file-exists@npm:1.1.1"
@@ -3733,13 +3704,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"element-internals-polyfill@npm:1.3.11":
-  version: 1.3.11
-  resolution: "element-internals-polyfill@npm:1.3.11"
-  checksum: 72467b0bcd8c580f41a276baa20f37cdf0e417c7c68e67987c7f21579a3f3ee4dd0ffbc0a65cf5fd7899c1c42ba9f0fb7312117abbf75214542b5c4e538d542a
-  languageName: node
-  linkType: hard
-
 "emoji-regex@npm:^8.0.0":
   version: 8.0.0
   resolution: "emoji-regex@npm:8.0.0"
@@ -5216,17 +5180,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lit@npm:3.1.3":
-  version: 3.1.3
-  resolution: "lit@npm:3.1.3"
-  dependencies:
-    "@lit/reactive-element": ^2.0.4
-    lit-element: ^4.0.4
-    lit-html: ^3.1.2
-  checksum: 17b33c2e6a9d93605766d1c35a8fbb48bd160b103f83b679b34813b1dd868e32a6955f70739d8d2893e68a6e0611ad20a8864b25e99981d2e2c14cc74362a6fc
-  languageName: node
-  linkType: hard
-
 "lit@npm:3.1.4, lit@npm:^3.1.2":
   version: 3.1.4
   resolution: "lit@npm:3.1.4"
@@ -5922,8 +5875,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nuxt-lit-ssr-issue@workspace:."
   dependencies:
-    "@justeattakeaway/pie-button": 0.47.8
-    "@justeattakeaway/pie-webc-core": 0.24.0
     "@nuxt/types": ^2.18.1
     "@rollup/plugin-node-resolve": 15.2.3
     lit: 3.1.4

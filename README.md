@@ -1,10 +1,6 @@
-# Nuxt 3 Minimal Starter
-
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
 ## Setup
 
-Make sure to install the dependencies:
+Make sure to install the dependencies. Node and Yarn versions are listed in the Volta config in `package.json`.
 
 ```bash
 # yarn
@@ -17,29 +13,11 @@ You may need to run `npx nuxt build` to generate the `.nuxt` directory. This wil
 
 ## Development Server
 
-Start the development server on `http://localhost:3002`:
+Start the development server on `http://localhost:3000`:
 
-There will likely be some errors but the site still runs well enough to reproduce the issue.
-
-```bash
-# yarn
-yarn dev
-```
-
-## Production
-
-Build the application for production:
+There will be some console errors (`DeprecationWarning` within `@vue/serverrenderer`, and `parse5` sourcemap warnings) but these don't seem to affect anything.
 
 ```bash
 # yarn
-yarn build
+yarn build && yarn dev
 ```
-
-Locally preview production build:
-
-```bash
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
